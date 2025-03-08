@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% block title %}Conversación{% endblock %}
+
+{% block content %}
+    
+        <h3 class="text-xl font-semibold mb-4">Conversación con {{ selected_conversation.name }}</h3>
+        <div class="bg-white p-4 rounded-lg shadow-md mb-4">
+            <div class="space-y-4">
+                {% for message in messages %}        
+                    <div>
+                        <p class="font-semibold">{{ message.sender.username }}:</p>
+                        <p>{{ message.content }}</p>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+        <form method="post" class="flex">
+            {% csrf_token %}
+            <textarea name="message" class="w-full p-2 border border-gray-300 rounded-lg" placeholder="Escribe un mensaje..." required></textarea>
+            <button type="submit" class="ml-2 p-2 bg-blue-500 text-white rounded-lg">Enviar</button>
+        </form>
+{% endblock %}

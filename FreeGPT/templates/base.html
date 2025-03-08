@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}FreeGPT{% endblock %}</title>
+    <!-- Incluye el CDN de Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Configuración personalizada de Tailwind -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#1a202c', // Color principal
+                        secondary: '#2d3748', // Color secundario
+                        accent: '#4a5568', // Color de acento
+                    },
+                },
+            },
+        }
+    </script>
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@5" rel="stylesheet" type="text/css" />
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+</head>
+<body class="bg-white text-gray-800">
+    <!-- Barra de navegación -->
+    <nav class="bg-gray-100 border-b border-gray-200">
+        <div class="container mx-auto px-4 py-4 flex justify-between items-center">
+            <a href="#" class="text-xl font-semibold text-primary">FreeGPT</a>
+            <ul class="menu menu-vertical lg:menu-horizontal bg-base-200 rounded-box">
+                <li><a>Inicio</a></li>
+                <li><a>Donaciones</a></li>
+                <li><a>Contacto</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Contenido principal -->
+    <main class="container mx-auto px-4 py-8">
+        {% block content %}
+        <!-- Contenido de la página -->
+        {% endblock %}
+    </main>
+
+    <!-- Pie de página -->
+    <footer class="bg-gray-100 border-t border-gray-200">
+        <div class="container mx-auto px-4 py-4 text-center text-gray-600">
+            &copy; 2025 FreeGPT. Todos los derechos reservados.
+        </div>
+    </footer>
+</body>
+</html>
+
+
