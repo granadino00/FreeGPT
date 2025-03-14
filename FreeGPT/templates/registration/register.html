@@ -1,10 +1,11 @@
-{% extends 'base.html' %}
+{% extends 'base_auth.html' %}
+{% load tailwind_filters %}
 
 {% block content %}
   <h2>Registrarse</h2>
   <form method="post">
     {% csrf_token %}
-    {{ form.as_p }}
-    <button type="submit">Registrarse</button>
+    {{ form|crispy }}
+    <button type="submit" class="btn btn-soft btn-accent bg-teal-800 px-5">Registrarse</button>
   </form>
 {% endblock %}

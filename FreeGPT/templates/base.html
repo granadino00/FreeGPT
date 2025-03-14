@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="es" data-theme="dark">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -12,9 +12,7 @@
             theme: {
                 extend: {
                     colors: {
-                        primary: '#1a202c', // Color principal
-                        secondary: '#2d3748', // Color secundario
-                        accent: '#4a5568', // Color de acento
+                        
                     },
                 },
             },
@@ -23,29 +21,39 @@
     <link href="https://cdn.jsdelivr.net/npm/daisyui@5" rel="stylesheet" type="text/css" />
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
 </head>
-<body class="bg-white text-gray-800">
+<body class="flex flex-col min-h-screen">
     <!-- Barra de navegación -->
-    <nav class="bg-gray-100 border-b border-gray-200">
-        <div class="container mx-auto px-4 py-4 flex justify-between items-center">
-            <a href="#" class="text-xl font-semibold text-primary">FreeGPT</a>
-            <ul class="menu menu-vertical lg:menu-horizontal bg-base-200 rounded-box">
-                <li><a>Inicio</a></li>
-                <li><a>Donaciones</a></li>
-                <li><a>Contacto</a></li>
-            </ul>
+    <nav class="">
+        <div class="navbar bg-base-200 shadow-sm">            
+            <div class="container mx-auto px-4 py-4 flex justify-between items-center">
+                <a href="#" class="text-xl font-semibold">FreeGPT</a>
+                <ul class="menu menu-vertical lg:menu-horizontal rounded-box">
+                    <li><a>Inicio</a></li>
+                    <li><a>Donaciones</a></li>
+                    <li><a>Contacto</a></li>
+                    <li>
+                        <form action="{% url 'logout' %}" method="post">
+                            {% csrf_token %}
+                            <button type="submit">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-log-out"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" x2="9" y1="12" y2="12"/></svg>
+                            </button>
+                        </form>
+                    </li>
+                </ul>            
+            </div>
         </div>
     </nav>
 
     <!-- Contenido principal -->
-    <main class="container mx-auto px-4 py-8">
+    <main class="container mx-auto px-4 py-8 flex-grow">
         {% block content %}
         <!-- Contenido de la página -->
         {% endblock %}
     </main>
 
     <!-- Pie de página -->
-    <footer class="bg-gray-100 border-t border-gray-200">
-        <div class="container mx-auto px-4 py-4 text-center text-gray-600">
+    <footer class="bg-base-200">
+        <div class="container mx-auto px-4 py-4 text-center">
             &copy; 2025 FreeGPT. Todos los derechos reservados.
         </div>
     </footer>

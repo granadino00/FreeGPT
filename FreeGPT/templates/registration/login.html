@@ -1,11 +1,12 @@
-{% extends 'base.html' %}
+{% extends 'base_auth.html' %}
+{% load tailwind_filters %}
 
 {% block content %}
 <h2>Iniciar sesión</h2>
 <form method="post">
   {% csrf_token %}
-  {{ form.as_p }}
-  <button type="submit">Login</button>
+  {{ form|crispy }}
+  <button type="submit" class="btn btn-soft btn-success bg-teal-800 px-5">Entrar</button>
 </form>
-<a href="/accounts/register/">Registro</a>
+<a href="/accounts/register/" class="link link-accent text-teal-300 mt-7">Ir a registrarse</a>
 {% endblock %}
