@@ -2,10 +2,22 @@
 
 {% block title %}Conversación{% endblock %}
 
-{% block content %}
-    
+{% block content %}   
+        <script>
+
+        </script>
         <h3 class="text-xl font-semibold mb-4">Conversación con {{ selected_conversation.name }}</h3>
-        <div class="bg-white p-4 rounded-lg shadow-md mb-4">
+        <div class="relative bg-base-200 rounded-lg shadow-md mb-4 min-h-[60vh]">
+            <div class="absolute dropdown top-0 left-0 rounded-3xl">
+                <div tabindex="0" role="button" class="btn m-1">Click</div>
+                <ul x-data="{isSelected: false}" tabindex="0" class="dropdown-content menu bg-base-100 rounded-box z-1 w-52 p-2 shadow-sm">
+                   {% for conversation in conversations %}  
+                        <li x-data="{ conversationId: {{conversation.id}}}"><a>{conversation.title}</a></li>
+                   {% endfor %}
+                  <li><a>Item 1</a></li>
+                  <li><a>Item 2</a></li>
+                </ul>
+            </div>
             <div class="space-y-4">
                 {% for message in messages %}        
                     <div>

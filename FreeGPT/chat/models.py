@@ -19,6 +19,7 @@ class Conversation(models.Model):
     user = models.ForeignKey(User, related_name='conversations', on_delete=models.CASCADE)
     bot = models.ForeignKey(Bot, related_name='conversations_bot', on_delete=models.CASCADE)
     started_at = models.DateTimeField(auto_now_add=True)
+    title = models.CharField(max_length=300, default="null")
 
     def __str__(self):
         return f"Conversation {self.id} with {self.user.username}"
